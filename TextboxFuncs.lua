@@ -84,3 +84,15 @@ local function GetLineText(Textbox)
 
 	return Content
 end
+
+local function GetCursorPos(Textbox)
+	local CurrentLine = GetLine(Textbox)
+	local LineText = GetLineText(Textbox)
+	local TextSize = Textbox.TextSize
+	local TextFont = Textbox.Font
+	
+	local LineWidth = TextService:GetTextSize(LineText, TextSize, TextFont, Textbox.AbsoluteSize).X
+	local LineHeight = CurrentLine * TextSize
+	
+	return UDim2.new(0, LineWidth,0, LineHeight)
+end
